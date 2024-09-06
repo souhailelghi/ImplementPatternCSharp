@@ -1,4 +1,6 @@
+using ExampleForAutoMapper.ClassUoW;
 using ExampleForAutoMapper.Data;
+using ExampleForAutoMapper.InterfaceUow;
 using ExampleForAutoMapper.IRepositorys;
 using ExampleForAutoMapper.Model;
 using ExampleForAutoMapper.Repositorys;
@@ -15,7 +17,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IRepository<Employee>, EmployeeRepository>();
-builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+//builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
