@@ -3,6 +3,7 @@ using ExampleForAutoMapper.Dto;
 using ExampleForAutoMapper.InterfaceUow;
 using ExampleForAutoMapper.IRepositorys;
 using ExampleForAutoMapper.Model;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,12 +15,14 @@ namespace ExampleForAutoMapper.Controllers
     {
         //private readonly IBaseRepository<Customer> _customerRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
-        public CustomerController(IUnitOfWork unitOfWork, IMapper mapper)
+        public CustomerController(IUnitOfWork unitOfWork, IMapper mapper , IMediator mediator)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _mediator = mediator;
         }
 
         // 1

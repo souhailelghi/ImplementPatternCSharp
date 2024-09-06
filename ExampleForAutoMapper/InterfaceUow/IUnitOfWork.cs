@@ -5,7 +5,8 @@ namespace ExampleForAutoMapper.InterfaceUow
 {
     public interface IUnitOfWork : IDisposable
     {
-        IBaseRepository<Customer> Customers { get; }
+        // IBaseRepository<Customer> Customers { get; }
+         ICustomerRepository Customers { get; }
         IBaseRepository<Employee> Employees { get; }
         IBaseRepository<Product> Products { get; }
 

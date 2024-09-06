@@ -11,16 +11,20 @@ namespace ExampleForAutoMapper.ClassUoW
         private readonly AppDbContext _context;
        
         
-        public IBaseRepository<Customer> Customers { get; private set; }
+       // public IBaseRepository<Customer> Customers { get; private set; }
+        public ICustomerRepository Customers { get; private set; }
 
         public IBaseRepository<Employee> Employees { get; private set; }
 
         public IBaseRepository<Product> Products { get; private set; }
 
+       
+
         public UnitOfWork(AppDbContext context)
         {
             _context = context;
-            Customers = new BaseRepository<Customer>(_context);
+            //Customers = new BaseRepository<Customer>(_context);
+            Customers = new CustomerRepository(_context);
             Employees = new BaseRepository<Employee>(_context);
             Products = new BaseRepository<Product>(_context);
         }
